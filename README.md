@@ -62,10 +62,7 @@ to revert to the last migration file:
 ```bash
 # unit tests
 npm run gesy-parse
- ``
-
-
-
+ ```
 
 
 ## Build
