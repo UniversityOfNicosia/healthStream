@@ -56,10 +56,15 @@ to revert to the last migration file:
 ```bash
   npm run migration:revert
 ```
- 
+
+
+## Build
+```bash
+npm run build
+```
 
 ## Test
 ```bash
 # unit tests
-$ npm run test
+npm run test
  
