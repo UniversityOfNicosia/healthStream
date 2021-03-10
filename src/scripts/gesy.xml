@@ -1,0 +1,62 @@
+<LabExecution>
+  <Header>
+    <UserDetails>
+      <Username>m11madalina1</Username>
+      <UserLastName>Last Name X</UserLastName>
+      <UserFirstName>Name X</UserFirstName>
+      <UserDocType>NID</UserDocType>
+      <UserDocId>0000679353</UserDocId>
+    </UserDetails>
+    <MessageType>01</MessageType>
+    <Timestamp>2019-05-10 12:55:24 +0300</Timestamp>
+    <LabOrderId>2001</LabOrderId>
+    <RelatedOrderId></RelatedOrderId>
+    <LabOrderExecutionId>1001</LabOrderExecutionId>
+    <VisitId>13500</VisitId>
+    <LabSystemVisitId></LabSystemVisitId>
+    <ExecutingProviderId>C1000</ExecutingProviderId>
+    <LabOrderCategory>LABH</LabOrderCategory>
+    <LabOrderIssueDate>2019-05-10 12:55:00 +0300</LabOrderIssueDate>
+    <LabOrderEffectiveFromDate>2019-05-10 00:00:00 +0300</LabOrderEffectiveFromDate>
+    <LabOrderExpiryDate>2019-08-10 23:59:59 +0300</LabOrderExpiryDate>
+    <LabOrderReservedOnDate>2019-05-10 00:00:00 +0300</LabOrderReservedOnDate>
+    <LabOrderReservationExpiryDate>2019-06-09 23:59:59 +0300</LabOrderReservationExpiryDate>
+    <LabOrderNotes/>
+    <IssuingProviderDetails>
+      <IssuingProviderId>D0000</IssuingProviderId>
+      <IssuingProviderName>Provider Name</IssuingProviderName>
+      <IssuingProviderLastName>Provider Last name</IssuingProviderLastName>
+      <IssuingProviderWorkPhoneNumber>12345678</IssuingProviderWorkPhoneNumber>
+    </IssuingProviderDetails>
+    <BeneficiaryDetails>
+      <BeneficiaryId>1111112222</BeneficiaryId>
+      <BeneficiaryDocType>ARC</BeneficiaryDocType>
+      <BeneficiaryName>Patient Name</BeneficiaryName>
+      <BeneficiaryLastName>Patient Last name</BeneficiaryLastName>
+      <BeneficiaryGender>F</BeneficiaryGender>
+      <BeneficiaryDOB>1979-01-01</BeneficiaryDOB>
+    </BeneficiaryDetails>
+    <BeneficiaryCoPaymentAmount>1.00</BeneficiaryCoPaymentAmount>
+    <ReimbursementPoints>29.47</ReimbursementPoints>
+  </Header>
+  <Activities>
+    <Activity>
+      <SeqNr>1</SeqNr>
+      <Code>24472-3</Code>
+      <Type>Test</Type>
+      <Name>Platelet function (closure time) collagen+ADP induced [Time] in Blood</Name>
+      <LabTestComments/>
+      <LabTestResultsRequired>YES</LabTestResultsRequired>
+      <Results>
+        <TestResult>
+          <TestCode>24472-3</TestCode>
+          <TestName>Platelet function (closure time) collagen+ADP induced [Time] in Blood</TestName>
+          <ResultValue></ResultValue>
+          <ResultUnits></ResultUnits>
+          <ResultReferenceRange></ResultReferenceRange>
+          <ResultComments></ResultComments>
+        </TestResult>
+      </Results>
+    </Activity>
+  </Activities>
+</LabExecution>
