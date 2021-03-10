@@ -10,6 +10,7 @@ export class LabTestResultDataService extends ADataService<LabTestResult> {
 
 
   public async add(params: ILabTestResultUpsertParams): Promise<LabTestResult> {
+    console.log("heee ther PRAMS AR E", params)
    const testResult = this.repository.create({
    ...params,
   }) 

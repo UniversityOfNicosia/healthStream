@@ -34,7 +34,7 @@ import { LabTestResult } from "./LabTestResult";
       id: number
   
       @Column()
-      sequenceNumber: number
+      seqNr: string
       
       @Column()
       code: string

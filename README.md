@@ -58,6 +58,16 @@ to revert to the last migration file:
 ```
 
 
+## To Parse a local xml file with gesy standard configuration into data tables 
+```bash
+# unit tests
+npm run gesy-parse
+ ``
+
+
+
+
+
 ## Build
 ```bash
 npm run build

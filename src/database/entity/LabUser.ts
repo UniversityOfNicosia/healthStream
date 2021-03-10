@@ -22,8 +22,6 @@ export class LabUser{
     @Column()
     userDocId: string
      
-
-
     @OneToOne(() => Laboratory, (laboratory) => laboratory.id, {lazy: true, cascade: true})
     @JoinColumn()
     public laboratory: Promise<Laboratory>

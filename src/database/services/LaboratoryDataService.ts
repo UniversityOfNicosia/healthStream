@@ -4,6 +4,10 @@ import { Laboratory } from "../entity/Laboratory";
 import { ADataService } from "./ADataService";
 import {Promise} from 'bluebird'
 import { AntibioticDataService } from "./AntibioticDataService";
+import { LabUserDataService } from "./LabUserDataService";
+import { LabBeneficiaryDataService } from "./LabBeneficiaryDataService";
+import { LabIssuingProviderDataService } from "./LabIssuingProviderDataService";
+import { LabActivityDataService } from "./LabActivityDataService";
 
 export class LaboratoryDataService extends ADataService<Laboratory> {
   constructor(em: EntityManager) {
@@ -19,9 +23,18 @@ export class LaboratoryDataService extends ADataService<Laboratory> {
       if (antibioticList) {
         await Promise.map(antibioticList, (c) => new AntibioticDataService(this.em).add({laboratoryId: savedLaboratory.id, ...c}))
       }
-      // if (userDetails) {
-      //   const userDetail = new AntibioticDataService(this.em).add({laboratoryId: savedLaboratory.id, ...c}))
-      // }
+      if (activities) {
+        await Promise.map(activities, (c) => new LabActivityDataService(this.em).add({laboratoryId: savedLaboratory.id, ...c}))
+      }
+      if (userDetails) {
+          await new LabUserDataService(this.em).add({laboratoryId: savedLaboratory.id, ...userDetails})
+      }
+      if (beneficiaryDetails) {
+         await new LabBeneficiaryDataService(this.em).add({laboratoryId: savedLaboratory.id, ...beneficiaryDetails})
+      }
+      if (issuingProviderDetails) {
+        await new LabIssuingProviderDataService(this.em).add({laboratoryId: savedLaboratory.id, ...issuingProviderDetails})
+     }
       return savedLaboratory
     })
   }

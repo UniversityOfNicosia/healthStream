@@ -22,7 +22,7 @@ export class LabBeneficiary{
     @Column({type: 'enum', enum: Gender})
     beneficiaryGender: Gender
 
-    @Column()
+    @Column({type:'timestamp'})
     beneficiaryDOB: Date
 
     @OneToOne(() => Laboratory, (laboratory) => laboratory.id, {lazy: true, cascade: true})
