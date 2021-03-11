@@ -4,7 +4,6 @@ import { initDatabaseConnection } from '../database/init';
 export const request = (options: AxiosRequestConfig): Promise<any> =>
   axios(options)
     .then((result) =>  {
-      console.log("FUCKING RESKSST", result)
       return result.data
     })
     .catch((e) => {

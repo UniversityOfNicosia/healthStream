@@ -1,7 +1,11 @@
 # compiled output
 /dist
 /node_modules
-/build
+/healthStream-backend/node_modules
+/healthStream-backend/build
+
+/healthStream-frontend/node_modules
+/healthStream-frontend/build
 .env.local
 
 
