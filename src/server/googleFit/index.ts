@@ -16,5 +16,6 @@ googleFitMiddleWare.get("/api/connect/datasources", googleFitController.getAllDa
 
  
 googleFitMiddleWare.get("/api/connect/sleepInfo", googleFitController.getSleepInfo);
+googleFitMiddleWare.post("/api/connect/sleepStages", googleFitController.getSleepStages);
 
 export default googleFitMiddleWare;

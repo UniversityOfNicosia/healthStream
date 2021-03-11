@@ -36,6 +36,7 @@ export default class GoogleFit {
 
   public connect(callbackUrl?: string, userId?: any): string { 
          const scopes = [ 
+           "https://www.googleapis.com/auth/fitness.sleep.read",
           "https://www.googleapis.com/auth/fitness.activity.read profile email openid"
         ]
         const url =  this.oAuthClient.generateAuthUrl({
@@ -105,22 +106,43 @@ export default class GoogleFit {
 
   public async getSleepInfo(token:string) { 
     try {
-        const requestUrl= "https://www.googleapis.com/fitness/v1/users/userId/dataset:aggregate"
+        const requestUrl = "https://www.googleapis.com/fitness/v1/users/me/sessions?startTime=2021-03-01T00:00:00.000Z&endTime=2021-03-10T23:59:59.999Z&activityType=72"
+        const result = await request({
+              url: requestUrl,
+              method: 'GET',
+               headers: {
+                authorization: token,
+              },
+             })
+              if(result) {
+                // console.log("result ===>", result)
+                 return result
+             }
+      } catch (error) {
+        console.log("the error is", error) 
+      }
+  }
+
+
+  public async getSleepStages(token:string) { 
+    try {
+        const requestUrl = "https://www.googleapis.com/fitness/v1/users/me/dataset:aggregate"
         const result = await request({
               url: requestUrl,
               method: 'POST',
                headers: {
                 authorization: token,
               },
-              data: {
+              
+              data:   {
                 "aggregateBy": [
-                  {
-                    "dataTypeName": "com.google.sleep.segment"
-                  }
+                    {
+                        "dataTypeName": "com.google.sleep.segment"
+                    }
                 ],
-                "endTimeMillis": 1614608092000,
-                "startTimeMillis": 1614780892000
-              }
+                "endTimeMillis": 1615360049000,
+                "startTimeMillis": 1614582449000
+            }
              })
               if(result) {
                 // console.log("result ===>", result)

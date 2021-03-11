@@ -97,13 +97,30 @@ export const getAllDataSources = async (req: Request, res: Response) => {
 export const getSleepInfo = async (req: Request, res: Response) => {
    const token  = req.headers.authorization
    const googleFitDS = req.externalFactory.getGoogleFitService()
-   const sleepIndfo = await googleFitDS.getSleepInfo(token)
+   const sleepInfo = await googleFitDS.getSleepInfo(token)
 
-   console.log(" O IPNOS MOU EINAI", sleepIndfo)
-   if ( sleepIndfo ) {
-       return res.status(200).send(sleepIndfo).end();
+   //console.log(" O IPNOS MOU EINAI", sleepInfo)
+   if ( sleepInfo ) {
+       return res.status(200).send(sleepInfo).end();
    } else {
        return res.status(404).end();
    }
 
 }; 
+
+
+export const getSleepStages = async (req: Request, res: Response) => {
+    const token  = req.headers.authorization
+    const googleFitDS = req.externalFactory.getGoogleFitService()
+    const sleepInfo = await googleFitDS.getSleepStages(token)
+ 
+    console.log(" getSleepStages O IPNOS MOU EINAI", sleepInfo)
+    if ( sleepInfo ) {
+        return res.status(200).send(sleepInfo).end();
+    } else {
+        return res.status(404).end();
+    }
+ 
+ }; 
+
+ 
