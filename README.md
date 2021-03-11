@@ -20,17 +20,13 @@ npm run gesy-parse
 ## GOOGLE FIT API
 
     step 1: authenticate and allow access by clicking the response url of  **http://localhost:3000/api/connect**
-    step 2: use token acquired (from the redirect url of step 1) as Bearer token for all other requests 
+    step 2: use token acquired (from the redirect url of step 1) 
+            as Bearer token for all other requests 
 
     step 3: Hit ur point of preference 
     
-    examples:  
-  
-  
-  GROUPS
-
-    # PUBLIC   
- ```bash
+```bash
+        # PUBLIC   
         body passing example (which represents the time interval)
           {
               "from": 1615360049000,
@@ -69,11 +65,11 @@ npm run gesy-parse
                       GET:  - /api/connect/public/location/wheelRevolutionCumulative
                       GET:  - /api/connect/public/location/distance
                       GET:  - /api/connect/public/location/speed
-
- ``` 
+```
  
-    # HEALTH   
+ 
 ```bash
+# HEALTH   
                   END POINTS PROVIDED
                       GET:  - /api/connect/public/health/glucose
                       GET:  - /api/connect/public/health/bloodPressure
@@ -83,10 +79,7 @@ npm run gesy-parse
                       GET:  - /api/connect/public/health/menstruation
                       GET:  - /api/connect/public/health/ovulationTest
                       GET:  - /api/connect/public/health/oxygensaturation
-                      GET:  - /api/connect/public/health/vaginalSpotting
-
-
-
+                      GET:  - /api/connect/public/health/vaginalSpotting 
  ``` 
 
 
