@@ -30,7 +30,7 @@ npm run gesy-parse
   GROUPS
 
     # PUBLIC   
-    ```bash
+ ```bash
         body passing example (which represents the time interval)
           {
               "from": 1615360049000,
@@ -70,10 +70,10 @@ npm run gesy-parse
                       GET:  - /api/connect/public/location/distance
                       GET:  - /api/connect/public/location/speed
 
-      ``` 
+ ``` 
  
     # HEALTH   
-    ```bash
+```bash
                   END POINTS PROVIDED
                       GET:  - /api/connect/public/health/glucose
                       GET:  - /api/connect/public/health/bloodPressure
@@ -87,7 +87,7 @@ npm run gesy-parse
 
 
 
-      ``` 
+ ``` 
 
 
 
@@ -163,4 +163,20 @@ npm run build
 ```bash
 # unit tests
 npm run test
- 
+```
+
+
+
+
+
+
+
+## Running the frontEnd
+
+
+  
+frontend is running in port : 3001
+start server with for development:
+ ```bash
+ npm run start 
+```
