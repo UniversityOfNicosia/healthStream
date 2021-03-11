@@ -26,7 +26,7 @@ npm run gesy-parse
     step 3: Hit ur point of preference 
     
 ```bash
-        # PUBLIC   
+ # PUBLIC   
         body passing example (which represents the time interval)
           {
               "from": 1615360049000,
@@ -70,6 +70,11 @@ npm run gesy-parse
  
 ```bash
 # HEALTH   
+       body passing example (which represents the time interval)
+          {
+              "from": 1615360049000,
+              "to": 1614582449000
+          }
                   END POINTS PROVIDED
                       GET:  - /api/connect/public/health/glucose
                       GET:  - /api/connect/public/health/bloodPressure
