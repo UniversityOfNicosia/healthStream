@@ -113,8 +113,8 @@ export default class GoogleFit {
                     "dataTypeName":  dataTypeName,
                   }
               ],
-              "endTimeMillis": params.startTime,
-              "startTimeMillis": params.endTime
+              "endTimeMillis":params.endTime,
+              "startTimeMillis":params.startTime,   
             }
           const requestUrl = `https://www.googleapis.com/fitness/v1/users/me/dataset:aggregate`
           const result = await request({

@@ -144,7 +144,6 @@ export const getHydration = async (req: Request, res: Response) => {
     const result = await req.externalFactory.getGoogleFitService().getAggregateData(params, dataTypeName )
 
     if ( result ) { 
-        console.log( " en erkete damerasssss", result)
         return res.status(200).send(result).end();
     } else {
         return res.status(404).end();

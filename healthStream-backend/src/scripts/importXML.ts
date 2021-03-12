@@ -20,7 +20,6 @@ const convertToJson = async (xmlFile : any) =>  {
   const result = await parser.parseStringPromise(xmlFile)
 
   const camelCaseProperties = await camelcaseKeys(result,  {deep: true});
- // console.log(" apotelesmna ", util.inspect(camelCaseProperties, false, null, true))
    return camelCaseProperties
 }
   
