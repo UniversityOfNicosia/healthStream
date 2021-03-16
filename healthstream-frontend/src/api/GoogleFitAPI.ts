@@ -5,7 +5,7 @@ import { BucketDTO, GoogleFitParameters } from "./dto/googleFit.dto"
 // TODO: accept user's token the correct way!
 
 const  host = "http://localhost:3000"
-const token = "ya29.a0AfH6SMC5BwtktCrQ70Cnu3aF5tAHdGGqk5P50xaDTVvpoG9GuEuUwm6bGDsGsKps82IXvEly-zOgRQOD-B9dn-euvZw0lPwxfWYuaUXbn0Q_VTjgP_edEzf3X5DBGGTU6qQtJxNFqyD0XrW9DN-fEw6FbXI5"
+const token = "ya29.a0AfH6SMDwXRm4NGI8e6M3rq0J70OkkQ0QyjYEJ_RniKmSFqOXN-JbWyTV2OObgqv2laNCWA3JvksRcnzcxcG0ieyNTNfYTGhHr9yzXA0qb_tXXVMMkpiiPP99hc1zOepP7kqMbPHPauHFzgdN-Stwzkxsk1Q0"
 export class GoogleFitAPI {
 
      public  static async connect() { 
@@ -69,7 +69,33 @@ export class GoogleFitAPI {
                body: JSON.stringify(params)
          })
          const data = await response.json()
-        return data.bucket
+         return data.bucket
+    }
+
+    public static async getHeartRate(params: GoogleFitParameters): Promise<BucketDTO[]> { 
+        const response = await fetch(`${host}/api/connect/public/body/heartRate`, {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' +  token
+               },
+               body: JSON.stringify(params)
+         })
+         const data = await response.json()
+          return data.bucket
+    }
+
+    public static async getStepsCount(params: GoogleFitParameters): Promise<BucketDTO[]> { 
+        const response = await fetch(`${host}/api/connect/public/activity/stepCountDelta`, {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' +  token
+               },
+               body: JSON.stringify(params)
+         })
+         const data = await response.json()
+          return data.bucket
     }
 
  }

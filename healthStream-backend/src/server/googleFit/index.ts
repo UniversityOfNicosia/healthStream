@@ -45,8 +45,8 @@ googleFitMiddleWare.post("/api/connect/public/body/weight", googleFitController.
 googleFitMiddleWare.post("/api/connect/public/sleep", googleFitController.getSleep);
 
  /**  NUTRITION */
-googleFitMiddleWare.get("/api/connect/public/nutrition", googleFitController.getNutrition);
-googleFitMiddleWare.get("/api/connect/public/nutrition/hydration", googleFitController.getHydration);
+googleFitMiddleWare.post("/api/connect/public/nutrition", googleFitController.getNutrition);
+googleFitMiddleWare.post("/api/connect/public/nutrition/hydration", googleFitController.getHydration);
   
 
  /**  BODY */

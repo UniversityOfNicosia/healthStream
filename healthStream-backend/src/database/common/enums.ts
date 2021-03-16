@@ -53,6 +53,7 @@ export enum Gender {
 
     HYDRATION= 'com.google.hydration',
     NUTRITION = 'com.google.nutrition',
+    HYDRATION_NUT= 'com.google.nutrition.summary',
 
     SLEEP = 'com.google.sleep.segment',
 

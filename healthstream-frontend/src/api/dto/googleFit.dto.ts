@@ -19,8 +19,8 @@ export interface DataSetDTO {
 }
 
 export interface PointDTO {
-	startTimeNanos?: string
-	endTimeNanos?: string
+	startTimeNanos: string
+	endTimeNanos: string
 	dataTypeName?: string
 	originDataSourceId?: string
 	value?: ValueDTO[]
@@ -28,6 +28,7 @@ export interface PointDTO {
 
 export interface ValueDTO {
 	intVal?: number
+	fpVal?: number
 	mapVal?: MapDTO[]
 }
 

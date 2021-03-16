@@ -1,3 +1,15 @@
+ 
+export enum DataSourceName  { 
+    ACTIVITY = 'ACTIVITY',
+    WORKOUT = 'WORKOUT',
+    SLEEP ='SLEEP',
+    HEART_RATE ='HEART_RATE',
+    STEPS = 'COUNT_STEPS',
+    HYDRATION ='HYDRATION',
+    NUTRITION = 'NUTRITION'
+ }
+
+
 export enum ActivityType  { 
 "Aerobics"=	9, 
 "Archery"= 	119,
@@ -115,3 +127,17 @@ export enum ActivityType  {
 "Zumba	"=101,
 } 
  
+
+
+export enum SleepingType {
+    "Unknown" = 0,
+    "Awake" = 1,
+    "Sleeping" = 2,
+    "Out of bed" = 3,
+    "Light sleep"  = 4,
+    "Deep sleep" = 5,
+    "REM sleep" = 6 
+}
+
+ 
+  

@@ -54,17 +54,17 @@ npm run gesy-parse
                       POST:  - /api/connect/public/body/weight
                                  
           ->  SLEEP:
-                      GET:  - /api/connect/public/sleep
+                      POST:  - /api/connect/public/sleep
 
           ->  NUTRITION:
-                      GET:  - /api/connect/public/nutrition
-                      GET:  - /api/connect/public/nutrition/hydration
+                      POST:  - /api/connect/public/nutrition
+                      POST:  - /api/connect/public/nutrition/hydration
 
           ->  LOCATION:
-                      GET:  - /api/connect/public/location/rpm
-                      GET:  - /api/connect/public/location/wheelRevolutionCumulative
-                      GET:  - /api/connect/public/location/distance
-                      GET:  - /api/connect/public/location/speed
+                      POST:  - /api/connect/public/location/rpm
+                      POST:  - /api/connect/public/location/wheelRevolutionCumulative
+                      POST:  - /api/connect/public/location/distance
+                      POST:  - /api/connect/public/location/speed
 ```
  
  
@@ -76,15 +76,15 @@ npm run gesy-parse
               "to": 1614582449000
           }
                   END POINTS PROVIDED
-                      GET:  - /api/connect/public/health/glucose
-                      GET:  - /api/connect/public/health/bloodPressure
-                      GET:  - /api/connect/public/health/bodyTemperature
-                      GET:  - /api/connect/public/health/cervicalmucus
-                      GET:  - /api/connect/public/health/cervicalPosition
-                      GET:  - /api/connect/public/health/menstruation
-                      GET:  - /api/connect/public/health/ovulationTest
-                      GET:  - /api/connect/public/health/oxygensaturation
-                      GET:  - /api/connect/public/health/vaginalSpotting 
+                      POST:  - /api/connect/public/health/glucose
+                      POST:  - /api/connect/public/health/bloodPressure
+                      POST:  - /api/connect/public/health/bodyTemperature
+                      POST:  - /api/connect/public/health/cervicalmucus
+                      POST:  - /api/connect/public/health/cervicalPosition
+                      POST:  - /api/connect/public/health/menstruation
+                      POST:  - /api/connect/public/health/ovulationTest
+                      POST:  - /api/connect/public/health/oxygensaturation
+                      POST:  - /api/connect/public/health/vaginalSpotting 
  ``` 
 
 
