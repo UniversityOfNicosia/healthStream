@@ -2,11 +2,12 @@
 import {NextFunction, Request, Response, CookieOptions} from 'express'
 import urlParse from 'url-parse'
 import queryParse from 'query-string'
-import { size } from 'lodash';
+import { clone, size } from 'lodash';
 import { IDataSetParams } from '../../services/googleFit';
 import { DataSourceName } from '../../database/common/enums';
 
-
+let moment = require('moment');
+ 
 export const connect = async (req: Request, res: Response) => {
 const {callbackUrl,userId} = req.body;
 const googleFitDS = req.externalFactory.getGoogleFitService()
@@ -135,11 +136,14 @@ export const getHydration = async (req: Request, res: Response) => {
 
  export const callGoogleFitAPIService = async (req: Request, res: Response, dataTypeName: DataSourceName) => {  
     const token  = req.headers.authorization
-    const {from, to} = req.body
-    const params : IDataSetParams = {
+    const {from} = req.body
+
+    
+   const to_ =  moment(from).add(23, 'hours').valueOf() 
+     const params : IDataSetParams = {
             token ,
             startTime: from,
-            endTime: to
+            endTime: to_
     }
     const result = await req.externalFactory.getGoogleFitService().getAggregateData(params, dataTypeName )
 

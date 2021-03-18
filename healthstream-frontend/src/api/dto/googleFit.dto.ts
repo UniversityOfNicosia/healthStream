@@ -1,8 +1,7 @@
 
 export interface GoogleFitParameters {
 	from?: number
-	to?: number
-}
+ }
 
  
 

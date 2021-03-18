@@ -13,13 +13,24 @@ import {
     LineSeries,
     ZoomAndPan,
   } from '@devexpress/dx-react-chart-material-ui';
-import { CircularProgress } from '@material-ui/core';
- 
+  import { ValueScale, Stack } from '@devexpress/dx-react-chart';
+
  let moment = require('moment');
 
 interface Props {
 	bucket: BucketDTO;
  }
+
+ const Label = (symbol: any) => {
+  return (props: any) => {
+    const { text } = props;
+    return (
+      <ValueAxis.Label
+        {...props}
+        text={text + symbol} />
+    );
+  };
+};
  
   const setHeartRateData = (bucket: BucketDTO) => {
     const data : any[] = []
@@ -28,13 +39,13 @@ interface Props {
                 if (dataset.point && size(dataset.point)>0) {
                     dataset.point.map((point, i)=> {
                         if (point.value && size(point.value)>0) {
-                     
-                           const differenceInMilliSeconds = (+point.endTimeNanos) - (+point.startTimeNanos)
-                       
-                            const  duration_ = moment.utc(moment.duration(differenceInMilliSeconds, "s").asMilliseconds()).format("HH:mm:ss")
+               
+                        //  const end = moment(+point.endTimeNanos *  Math.pow(10, -9));
+                        //  const i = moment(+end).format("HH:mm:ss")
                             point.value.map((val, i)=> {  
                                 const units =  val.fpVal  
-                                data.push({duration_, units})
+                                const hours = (i +1) * 8
+                                data.push({hours, units})
                             })
                         }   
                     })
@@ -46,15 +57,21 @@ interface Props {
  
 const HeartRate = ({bucket}: Props) => {
     const heartData = setHeartRateData(bucket)
+    const LabelWithThousand = Label('  H');
+    const modifySleepDomain = (domain: any) => [domain[0], 24];
+
+      console.log("zsfsfsdfsdfdf", heartData)
   	return (
         <>
            
 		 
         <Paper>
         <Chart data={heartData}>
-          <ArgumentAxis />
-          <ValueAxis /> 
-          <LineSeries valueField="units" argumentField="duration_" />
+        <ValueScale name="hours" modifyDomain={modifySleepDomain} />
+ 
+          <ArgumentAxis  labelComponent={LabelWithThousand}/>
+          <ValueAxis  /> 
+          <LineSeries valueField="units" argumentField="hours" />
           <ZoomAndPan />
         </Chart>
       </Paper> 

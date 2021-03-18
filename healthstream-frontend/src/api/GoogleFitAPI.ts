@@ -5,7 +5,7 @@ import { BucketDTO, GoogleFitParameters } from "./dto/googleFit.dto"
 // TODO: accept user's token the correct way!
 
 const  host = "http://localhost:3000"
-const token = "ya29.a0AfH6SMDwXRm4NGI8e6M3rq0J70OkkQ0QyjYEJ_RniKmSFqOXN-JbWyTV2OObgqv2laNCWA3JvksRcnzcxcG0ieyNTNfYTGhHr9yzXA0qb_tXXVMMkpiiPP99hc1zOepP7kqMbPHPauHFzgdN-Stwzkxsk1Q0"
+const token = "ya29.a0AfH6SMBxOxfHPpNzhA1zQ82C8SnOvALHIharEZ_g4Oh80DGjkfZi3Eyf9PScp4HBtwKKO_qEgX5NJJybIeO19cMl_UIoHwsnyScSJJ_8zodII-ukKE13eQ_hF5BN2zwxu8hWlDSxlAIdjb060Uvlusw7I1R9"
 export class GoogleFitAPI {
 
      public  static async connect() { 
@@ -60,7 +60,8 @@ export class GoogleFitAPI {
     }
 
     public static async getSleep(params: GoogleFitParameters): Promise<BucketDTO[]> { 
-        const response = await fetch(`${host}/api/connect/public/sleep`, {
+         
+         const response = await fetch(`${host}/api/connect/public/sleep`, {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',
@@ -69,7 +70,7 @@ export class GoogleFitAPI {
                body: JSON.stringify(params)
          })
          const data = await response.json()
-         return data.bucket
+           return data.bucket
     }
 
     public static async getHeartRate(params: GoogleFitParameters): Promise<BucketDTO[]> { 

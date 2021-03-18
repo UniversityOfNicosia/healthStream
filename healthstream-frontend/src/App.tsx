@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import {GoogleFitAPI} from './api/GoogleFitAPI'
 import unic_logo from './css/images/unic_logo.jpg'
 import Bucket from './components/Bucket';
 import { BucketDTO,   } from './api/dto/googleFit.dto';
@@ -24,11 +23,16 @@ import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import clsx from 'clsx';
+import { useHistory } from "react-router-dom";
+import AppMenu from './components/AppMenu'
 
-const drawerWidth = 240;
+
+const drawerWidth = 300;
+
+ 
 
 const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
+  createStyles({ 
     root: {
       display: 'flex',
     },
@@ -57,14 +61,19 @@ const useStyles = makeStyles((theme: Theme) =>
       flexShrink: 0,
     },
     drawerPaper: {
+ 
+      position: 'relative',
+      whiteSpace: 'nowrap',
       width: drawerWidth,
+      paddingTop: theme.spacing(4),
+      paddingBottom: theme.spacing(4),
+  
     },
     drawerHeader: {
       display: 'flex',
       alignItems: 'center',
       padding: theme.spacing(0, 1),
-      // necessary for content to be below app bar
-      ...theme.mixins.toolbar,
+       ...theme.mixins.toolbar,
       justifyContent: 'flex-end',
     },
     content: {
@@ -86,14 +95,20 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
+ 
+  
+const App = ( ) => {
 
-function App() {
-
+  let history = useHistory();
   const [ buckets, setBuckets ] =useState<BucketDTO[]>([])
   const [ token, setToken ] =useState<string>('')
   const [ resultTitle, setResultTitle ] =useState<string>('')
   const [ dataSourceName, setDataSourceName ] =useState<DataSourceName>()
+  const [openMenu, setOpenMenu] =  useState(false)
+  const [ dateFilter, setDateFilter ] =useState<string>('')
 
+   
+ 
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -108,9 +123,14 @@ function App() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
- 
-  return (
 
+  
+  
+
+ 
+
+  return (
+ 
 <>
 <div className={classes.root}>
       <CssBaseline />
@@ -122,8 +142,7 @@ function App() {
       >
         <Toolbar style={{  backgroundColor: "white" }}>
           <IconButton
-            color="inherit"
-            aria-label="open drawer"
+             aria-label="open drawer"
             onClick={handleDrawerOpen}
             edge="start"
             className={clsx(classes.menuButton, open && classes.hide)}
@@ -131,115 +150,60 @@ function App() {
             <MenuIcon />
           </IconButton>
           <img src={unic_logo}  alt="logo" />
-          <Typography variant="h6" noWrap>
-             Google Fit data
-          </Typography>
+          
         </Toolbar>
       </AppBar>
       <Drawer
         className={classes.drawer}
         variant="persistent"
         anchor="left"
-        open={open}
+        open={open} 
         classes={{
           paper: classes.drawerPaper,
         }}
       >
+
         <div className={classes.drawerHeader}>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
           </IconButton>
-        </div>
+        </div>  
+        
+        <AppMenu/>
         <Divider />
-        <List>
-          {['Google Fit Data'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
-        <Divider />
-        <List>
-          {['Google Fit Data'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
+        
       </Drawer>
-      <main
-        className={clsx(classes.content, {
-          [classes.contentShift]: open,
-        })}
-      >
-        <div className={classes.drawerHeader} />
-              <Container style={{padding: 10}}>  
-                    <label  style={{marginBottom: 10 }}   >Please enter a date range to retrieve your data </label>
-                      <br/>  <br/> 
-                    <GoogleCriteria  onCriteriaAdded={addBucket} onTitleSet={setResultTitle} onDataSourceNameSet={setDataSourceName}
-                      />     
-            </Container>
-            { buckets !== undefined   ?  buckets.map((b, i)=> {
+              <main
+              className={clsx(classes.content, {
+                [classes.contentShift]: open,
+              })}
+            >
+              
+                <div className={classes.drawerHeader} />
+                    <Container style={{padding: 10}}>  
+                          <label  style={{marginBottom: 10 }}   >Please enter a date range to retrieve your data </label>
+                            <br/>  <br/> 
+                            <GoogleCriteria  onCriteriaAdded={addBucket} onTitleSet={setResultTitle} onDateSet={setDateFilter} onDataSourceNameSet={setDataSourceName}
+                            />     
+                    </Container>
+                  { buckets !== undefined   ?  buckets.map((b, i)=> {
+                  
+                            return (   
+                              <Container style={{padding: 10}}>  
+                                    <Bucket bucket={b} title={resultTitle} dataSourceName={dataSourceName} dateFilter={dateFilter}/>  
+                              </Container>        
+                            );
+                      
+                  }) : []  
+                  }
             
-                      return (   
-                        <Container style={{padding: 10}}>  
-                              <Bucket bucket={b} title={resultTitle} dataSourceName={dataSourceName}/>  
-                        </Container>        
-                      );
-                
-            }) : []  
-            }
-      </main>
-    </div>
+             </main>   
+      </div>
 
  </>
-  //    <div className="App">
-  //       <header> 
-  //           <AppBar position="static">
-  //               <Toolbar  style={{  backgroundColor: "white" }} >  
-  //               <img src={unic_logo}  alt="logo" />
-  //                  <Typography variant="h5" style={{  padding: 1, color: "rgb(187, 29, 44)" }}>
-  //                  &nbsp; &nbsp;&nbsp;&nbsp;Google Fit User Data
-  //                 </Typography> 
-  //               </Toolbar> 
-  //         </AppBar>
-  //       </header> 
-  //       <br/>
-  //       {/* <GoogleLogin
-  //         clientId="226710377524-9v7i0eq9qqpcc0qrfo5eqs0toga9lap9.apps.googleusercontent.com"
-  //         buttonText="Login"
-  //         onSuccess={responseGoogle}
-  //         onFailure={responseGoogle}
-  //         cookiePolicy={'single_host_origin'}
-  //      />, */}
-  //     <br/><br/><br/>
-  //     <Container style={{padding: 10}}>  
-  //             <label  style={{marginBottom: 10 }}   >Please enter a date range to retrieve your data </label>
-  //             <br/>  <br/> 
-  //            <GoogleCriteria  onCriteriaAdded={addBucket} onTitleSet={setResultTitle} onDataSourceNameSet={setDataSourceName}
-  //             />     
-  //      </Container>
-  //     { buckets !== undefined   ?  buckets.map((b, i)=> {
-      
-  //               return (   
-  //                 <Container style={{padding: 10}}> 
-  //                      <Card component="span" key={i}>
-  //                       <Bucket bucket={b} title={resultTitle} dataSourceName={dataSourceName}/> 
-  //                     </Card> 
-  //                  </Container>        
-  //               );
-           
-  //     }) : [] 
-         
-  //     }
-  //     <br/>  <br/> <br/>  <br/> <br/>  <br/> <br/>  <br/> <br/>  <br/> <br/>  <br/> 
-  //         <br/>  <br/> <br/>  <br/> <br/>  <br/> <br/>  <br/> 
-  //     <footer> HEALTH STREAM </footer>
- 
-  //     </div>
+
   );
     }
 
 export default App
+ 

@@ -42,6 +42,7 @@ export enum Gender {
 
     BODY_FAT_PERCENTAGE = 'com.google.body.fat.percentage',
     HEART_RATE = 'com.google.heart_rate.bpm',
+    // HEART_RATE= 'com.google.heart_rate.summary',
     HEIGHT ='com.google.height',
     WEIGHT = 'com.google.weight',
 
@@ -66,5 +67,6 @@ export enum Gender {
     OVULATION = 'com.google.ovulation_test',
     OXYGEN_SATURATION = 'com.google.oxygen_saturation',
     VAGINAL_SPOTTING = 'com.google.vaginal_spotting',
+
 
    } 

@@ -107,14 +107,29 @@ export default class GoogleFit {
 
   public  async getAggregateData(params: IDataSetParams, dataTypeName: DataSourceName) {
           try {
-            const data = {
+            let data = {}
+              data = {
               "aggregateBy": [
                   {
                     "dataTypeName":  dataTypeName,
                   }
               ],
+              "bucketByTime": { "durationMillis": 86400000 },
               "endTimeMillis":params.endTime,
               "startTimeMillis":params.startTime,   
+            }
+
+            if(dataTypeName == DataSourceName.SLEEP) {
+              console.log("in hererer")
+              data = {
+                "aggregateBy": [
+                    {
+                      "dataTypeName":  dataTypeName,
+                    }
+                ], 
+                "endTimeMillis":params.endTime,
+                "startTimeMillis":params.startTime,   
+              }
             }
           const requestUrl = `https://www.googleapis.com/fitness/v1/users/me/dataset:aggregate`
           const result = await request({
@@ -132,7 +147,8 @@ export default class GoogleFit {
           console.log("the error is", error) 
         }
    }
- 
+
+  
 
 }
   

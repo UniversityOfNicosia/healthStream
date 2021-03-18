@@ -4,7 +4,7 @@ export enum DataSourceName  {
     WORKOUT = 'WORKOUT',
     SLEEP ='SLEEP',
     HEART_RATE ='HEART_RATE',
-    STEPS = 'COUNT_STEPS',
+    STEPS = 'STEPS',
     HYDRATION ='HYDRATION',
     NUTRITION = 'NUTRITION'
  }
@@ -140,4 +140,5 @@ export enum SleepingType {
 }
 
  
-  
+   
+ 

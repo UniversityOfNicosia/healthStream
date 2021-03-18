@@ -14,19 +14,20 @@ interface Props {
 	bucket: BucketDTO;
 	title: string
 	dataSourceName?: DataSourceName;
+	dateFilter: any
 	// onTaskDelete: (taskId: number) => void
 }
 
  
  
-const Bucket = ({bucket, title, dataSourceName}: Props) => {
+const Bucket = ({bucket, title, dataSourceName, dateFilter}: Props) => {
 	switch (dataSourceName) {
 		case DataSourceName.ACTIVITY: {
 			return (
 			<>
 			<h1 color="primary"> {title} </h1> 
 			<Activity bucket={bucket} /> 
-			<GChart />	 
+			{/* <GChart />	  */}
 			</> 
 			)
 		}
@@ -34,7 +35,7 @@ const Bucket = ({bucket, title, dataSourceName}: Props) => {
 			return (
 			<>
 			<h1 color="primary"> {title} </h1> 
-			<Sleep bucket={bucket} /> 
+			<Sleep bucket={bucket} dateFilter={dateFilter}/> 
  			</> 
 			)
 		}
@@ -52,7 +53,7 @@ const Bucket = ({bucket, title, dataSourceName}: Props) => {
 			return (
 			<>
 			<h1 color="primary"> {title} </h1> 
-			<Steps bucket={bucket} /> 
+			<Steps bucket={bucket}  dateFilter={dateFilter}/> 
 		 
  			</> 
 			)
