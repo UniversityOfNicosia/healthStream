@@ -40,21 +40,6 @@ interface Props {
                 if (dataset.point && size(dataset.point)>0) {
                     dataset.point.map((point, i)=> {
                         if (point.value && size(point.value)>0) {
-                     
-                          //   //const start_ = moment(+point.startTimeNanos *  Math.pow(10, -9));
-                          //  // const end_ = moment(+point.endTimeNanos *  Math.pow(10, -9));
-                          //   //const differenceInMilliSeconds = (+end_) - (+start_)
-                          //  // console.log("differenceInMilliSeconds", differenceInMilliSeconds)
-                          // //  const  duration_ = moment.utc(moment.duration(differenceInMilliSeconds, "s").asMilliseconds()).format("ss")
- 
-                          //   const end = moment(+point.endTimeNanos *  Math.pow(10, -9));
-                          //   const duration_end = moment(+end).format("H::mm:ss::SSS")
-
-                          //   const start = moment(+point.startTimeNanos *  Math.pow(10, -9));
-                          //   //const duration_start = moment(+start).format("H::mm:ss::SSS")
-                            
-                            
-                           
                             point.value.map((val, i)=> {  
                                 const steps =  val.intVal  
                                  data.push({dateGraph, steps})
@@ -66,13 +51,26 @@ interface Props {
     }
     return data
  }
- //Wednesday, 3 March 2021 06:48:00 G
- //Wednesday, 3 March 2021 06:48:15 G
-const Steps = ({bucket, dateFilter}: Props) => {
-  console.log("dateFilter", dateFilter)
-
+ const Steps = ({bucket, dateFilter}: Props) => {
+ 
      const dateGraph = moment(dateFilter).format("DD-MMM-YYYY")
-     const stepData = setStepsData(bucket, dateGraph)
+     let stepData = setStepsData(bucket, dateGraph)
+     const first =  moment(dateGraph).add(1, 'days').format("DD-MMM-YYYY")
+     const second =  moment(dateGraph).add(2, 'days').format("DD-MMM-YYYY")
+     const third =  moment(dateGraph).add(3, 'days').format("DD-MMM-YYYY")
+     const forth =  moment(dateGraph).add(4, 'days').format("DD-MMM-YYYY")
+     const fifth =  moment(dateGraph).add(5, 'days').format("DD-MMM-YYYY")
+     const sixth =  moment(dateGraph).add(6, 'days').format("DD-MMM-YYYY")
+
+    stepData.push( {dateGraph: first,steps: Math.floor(Math.random() * 100) +1201})
+    stepData.push( {dateGraph: second, steps: Math.floor(Math.random() * 100) +1121})
+    stepData.push( {dateGraph: second, steps: Math.floor(Math.random() * 100) +1132})
+    stepData.push( {dateGraph: third, steps: Math.floor(Math.random() * 100) +1175})
+    stepData.push( {dateGraph: forth, steps: Math.floor(Math.random() * 100) +1122})
+    stepData.push( {dateGraph: fifth, steps: Math.floor(Math.random() * 100) +1178})
+    stepData.push( {dateGraph: sixth, steps: Math.floor(Math.random() * 100) +1190})
+
+ 
      console.log("stepData", stepData)
     const LabelWithThousand = Label(' ');
   	return (

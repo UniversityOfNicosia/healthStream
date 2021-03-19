@@ -34,18 +34,18 @@ interface Props {
  
   const setHeartRateData = (bucket: BucketDTO) => {
     const data : any[] = []
+     
     if (bucket.dataset && size(bucket.dataset) >0 ) {
         bucket.dataset.map((dataset, i)=> {
                 if (dataset.point && size(dataset.point)>0) {
                     dataset.point.map((point, i)=> {
                         if (point.value && size(point.value)>0) {
                
-                        //  const end = moment(+point.endTimeNanos *  Math.pow(10, -9));
-                        //  const i = moment(+end).format("HH:mm:ss")
+
                             point.value.map((val, i)=> {  
                                 const units =  val.fpVal  
-                                const hours = (i +1) * 8
-                                data.push({hours, units})
+
+                                data.push({ units})
                             })
                         }   
                     })
@@ -56,9 +56,15 @@ interface Props {
  }
  
 const HeartRate = ({bucket}: Props) => {
+  const hours = ["average" ,"max","min", ]
     const heartData = setHeartRateData(bucket)
-    const LabelWithThousand = Label('  H');
+    const LabelWithThousand = Label('  ');
     const modifySleepDomain = (domain: any) => [domain[0], 24];
+
+    heartData.map((e, i)=> {
+        e.hours = hours[i]
+    })
+ 
 
       console.log("zsfsfsdfsdfdf", heartData)
   	return (

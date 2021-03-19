@@ -39,61 +39,49 @@ interface Props {
 const Sleep = ({bucket, dateFilter}: Props) => {
    const dateGraph = moment(dateFilter).format("DD-MMM-YYYY")
    console.log("dateGraph", dateGraph)
+   const first =  moment(dateGraph).add(1, 'days').format("DD-MMM-YYYY")
+   const second =  moment(dateGraph).add(2, 'days').format("DD-MMM-YYYY")
+
 
       const data: any[ ] = [
         {
           date: dateGraph,
           unknown: 0,
           awake: 0,
-          sleeping: 0,
+          sleeping: 2,
           out_of_bed: 0,
-          light_sleep : 0,
-          deep_sleep : 0,
+          light_sleep : 4,
+          deep_sleep : 1,
           rem_sleep: 0,
       
-        }
+        },
+        {
+          date: first,
+          unknown: 0,
+          awake: 0,
+          sleeping: 4,
+          out_of_bed: 0,
+          light_sleep : 2,
+          deep_sleep : 1,
+          rem_sleep: 0,
+      
+        },
+        {
+          date: second,
+          unknown: 0,
+          awake: 1,
+          sleeping: 0,
+          out_of_bed: 0,
+          light_sleep : 5,
+          deep_sleep : 1,
+          rem_sleep: 0,
+      
+        },
+     
 
       ]
    
-    if (bucket?.dataset && size(bucket.dataset) >0 ) {
-        bucket.dataset.map((dataset, i)=> {
-                if (dataset.point && size(dataset.point)>0) {
-                    dataset.point.map((point, i)=> {
-                        if (point.value && size(point.value)>0) {
-                             const end = moment(+point.endTimeNanos *  Math.pow(10, -9));
-                             const start = moment(+point.startTimeNanos *  Math.pow(10, -9));
-
-                           const duration = moment.duration(end.diff(start)).asMilliseconds()
-                             
-                             point.value.map((val, i)=> {   
-                                const sleepType =   SleepingType[val.intVal as any]
-                                   if (sleepType === 'REM sleep') { 
-                                    data[0].rem_sleep +=   duration
-                                  }
-                                  if (sleepType === 'Unknown') {
-                                    data[0].unknown +=   duration
-                                  }
-                                  if (sleepType === 'Sleeping') {
-                                    data[0].sleeping +=duration
-                                  }
-                                  if (sleepType ===  'Out of bed') {
-                                    data[0].out_of_bed += duration
-                                  }
-                                  if (sleepType === 'Awake') {
-                                    data[0].awake += duration
-                                  }
-                                  if (sleepType === 'Light sleep') {
-                                    data[0].light_sleep + duration
-                                  }
-                                  if (sleepType ===  'Deep sleep' ) {
-                                    data[0].deep_sleep +=  duration
-                                  }
-                             })
-                        }   
-                    })
-                }
-        })
-    }
+ 
  
     const sleepData = data
     console.log("sleeping data", sleepData)

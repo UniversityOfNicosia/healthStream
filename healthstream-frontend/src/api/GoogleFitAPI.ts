@@ -5,7 +5,7 @@ import { BucketDTO, GoogleFitParameters } from "./dto/googleFit.dto"
 // TODO: accept user's token the correct way!
 
 const  host = "http://localhost:3000"
-const token = "ya29.a0AfH6SMBxOxfHPpNzhA1zQ82C8SnOvALHIharEZ_g4Oh80DGjkfZi3Eyf9PScp4HBtwKKO_qEgX5NJJybIeO19cMl_UIoHwsnyScSJJ_8zodII-ukKE13eQ_hF5BN2zwxu8hWlDSxlAIdjb060Uvlusw7I1R9"
+const token = "ya29.a0AfH6SMC9x-ZQNMDBDTifLC3Ez1o5Afv4JJahu9PWnm9gdnFU5oaX-eF7PEh-ubWUzBAb23m9f9Pgp9FTNEBH-5Pvma7uQryMZaUBHVt0ysPz3h5SH4IZTdH7AB62OA20YL-1yvjX0cxb9RIxGqYSLCeQQ0nh"
 export class GoogleFitAPI {
 
      public  static async connect() { 
